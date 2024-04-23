@@ -1,0 +1,65 @@
+<!doctype html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Meta tags necesarias -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Agregar Domicilio</title>
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Agregar Domicilio</h2>
+
+    <!-- Formulario para agregar ciudadano -->
+    <form action="/crearDomicilio" method="post">
+
+        <input type="hidden" name="ciudadanoId" th:value="${ciudadanoId}"/>
+        <!-- Campo para la dirección -->
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" required>
+        </div>
+
+        <!-- Campo para la ciudad -->
+        <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+        </div>
+
+        <!-- Campo para el código postal -->
+        <div class="form-group">
+            <label for="codigoPostal">Código Postal</label>
+            <input type="text" class="form-control" id="codigoPostal" name="codigoPostal">
+        </div>
+
+        <!-- Campo para el país -->
+        <div class="form-group">
+            <label for="pais">País</label>
+            <input type="text" class="form-control" id="pais" name="pais" required>
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="mt-3">
+            <!-- Botón de guardar -->
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <!-- Botón de cancelar -->
+            <a href="javascript:history.back()" class="btn btn-secondary">Volver</a>
+        </div>
+
+    </form>
+</div>
+
+<!-- Bootstrap JS, Popper.js, y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

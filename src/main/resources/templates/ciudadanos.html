@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Ciudadanos</title>
+</head>
+<body>
+<div class="container">
+
+    <!-- Tabla de Ciudadanos -->
+    <h1 class="text-center my-4">Ciudadanos</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Lista de Ciudadanos</h3>
+        <!-- Botón para agregar un nuevo ciudadano -->
+        <a href="/formularioCiudadano" class="btn btn-primary">Agregar Ciudadano</a>
+    </div>
+    <table id="ciudadanos-table" class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Domicilios</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ciudadano: ${ciudadanos}">
+            <td th:text="${ciudadano.id}"></td>
+            <td th:text="${ciudadano.nombre}"></td>
+            <td th:text="${ciudadano.apellido}"></td>
+            <td th:text="${ciudadano.f_nacimiento}"></td>
+            <td th:text="${ciudadano.telefono}"></td>
+            <td th:text="${ciudadano.email}"></td>
+            <td>
+                <a th:href="@{'/ciudadanos/' + ${ciudadano.id} + '/domicilios'}">Ver Domicilios</a>
+            </td>
+            <td>
+                <!-- Botones de acciones -->
+                <form th:action="@{/ciudadano/{id}(id=${ciudadano.id})}" method="post">
+                    <button type="submit" class="btn btn-warning">Actualizar</button>
+                </form>
+                <form th:action="@{/eliminarCiudadano/{id}(id=${ciudadano.id})}" method="post">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

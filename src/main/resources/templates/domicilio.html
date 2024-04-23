@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Meta tags necesarias -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <title>Editar Domicilio</title>
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Editar Domicilio</h2>
+
+    <!-- Formulario para editar ciudadano -->
+    <form th:action="@{/actualizarDomicilio/{id}(id=${domicilio.id})}" th:object="${domicilio}" method="post">
+    <!-- Campo para el id -->
+        <input type="hidden" th:field="${domicilio.id}"/>
+        <!-- Campo para el nombre -->
+        <div class="row">
+            <!-- Campo para el nombre -->
+            <div class="col-md-4 form-group">
+                <label for="direccion">Direccion</label>
+                <input type="text" class="form-control" id="direccion" th:field="${domicilio.direccion}" required>
+            </div>
+
+            <!-- Campo para el apellido -->
+            <div class="col-md-4 form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad" th:field="${domicilio.ciudad}" required>
+            </div>
+
+            <!-- Campo para la fecha de nacimiento -->
+            <div class="col-md-4 form-group">
+                <label for="codigoPostal">Codigo Postal</label>
+                <input type="text" class="form-control" id="codigoPostal" th:field="${domicilio.codigoPostal}" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Campo para el teléfono -->
+            <div class="col-md-4 form-group">
+                <label for="pais">Pais</label>
+                <input type="tel" class="form-control" id="pais" th:field="${domicilio.pais}" required>
+            </div>
+
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="row">
+            <div class="col-md-2 mt-3">
+                <!-- Botón de guardar -->
+                <button type="submit" class="btn btn-warning">Actualizar</button>
+            </div>
+            <div class="col-md-2 mt-3">
+                <!-- Botón de guardar -->
+                <a href="javascript:history.back()" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+
+<!-- Bootstrap JS, Popper.js, y jQuery -->
+</body>
+
+</html>

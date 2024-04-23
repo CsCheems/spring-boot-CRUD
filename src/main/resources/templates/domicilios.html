@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Ciudadanos</title>
+</head>
+<body>
+<div class="container">
+
+    <!-- Tabla de Ciudadanos -->
+    <h1 class="text-center my-4">Domicilios</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Lista de Domicilios</h3>
+        <div>
+            <!-- Botón para agregar un nuevo domicilio -->
+            <a th:href="@{'/formularioDomicilio?ciudadanoId=' + ${ciudadano.id}}" class="btn btn-primary">Agregar Domicilio</a>
+            <!-- Botón para volver a la lista de ciudadanos -->
+            <a href="/ciudadanos" class="btn btn-secondary">Ciudadanos</a>
+        </div>
+    </div>
+    <table id="domicilios-table" class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+            <th>Codigo Postal</th>
+            <th>Pais</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="domicilio: ${domicilios}">
+            <td th:text="${domicilio.id}"></td>
+            <td th:text="${domicilio.direccion}"></td>
+            <td th:text="${domicilio.ciudad}"></td>
+            <td th:text="${domicilio.codigoPostal}"></td>
+            <td th:text="${domicilio.pais}"></td>
+            <td>
+                <!-- Botones de acciones -->
+                <form th:action="@{'/domicilio/' + ${domicilio.id}}" method="post">
+                    <button type="submit" class="btn btn-warning">Actualizar</button>
+                </form>
+                <form th:action="@{'/ciudadano/' + ${ciudadano.id} + '/eliminarDomicilio/' + ${domicilio.id}}" method="post">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
